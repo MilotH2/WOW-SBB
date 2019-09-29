@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar  class="ion-text-center">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <span>Found a surprise, pick one!</span>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngFor="let data of dataList">
+    <ion-card style="color: black" button *ngIf="data.ow && data.rt" (click)="presentPopover(data, $event)">
+      <ion-row> 
+        
+        <ion-col size-xs="12">
+              <h3>
+                From: {{data.ow.trip.segments[0].origin.name}} to SURPRISE
+              </h3>  
+              <p>
+                Departure: <span style="float: right">{{data.ow.departure}}</span>
+              </p>  
+              <p>
+                Arrival: <span style="float: right">{{data.rt.arrival}}</span>
+              </p>
+              <p>
+                Price <span style="float: right">{{data.ow.price}}</span>
+              </p>  
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-grid>
+  <ion-grid *ngFor="let data of dataList">
+    <ion-card style="color: black" button *ngIf="!data.ow || !data.rt" (click)="presentPopover(data, $event)">
+      <ion-row> 
+        
+        <ion-col size-xs="12">
+              No Return Ticket Found, please go back and try again!
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-grid>
+</ion-content>

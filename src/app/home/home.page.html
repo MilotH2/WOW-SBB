@@ -1,0 +1,148 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons> -->
+    <ion-title>
+      <img src="/assets/SBB-Logo.png" alt="">
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-row>
+  <ion-col class="ion-text-center">
+    <h3>What do you like?</h3>
+  </ion-col>
+</ion-row>
+    <div class="thumnails">
+        <div class="list-thumbnail" >
+            <div  class="img-thumb ion-text-wrap" *ngIf="tagId === 0">            
+                <div class="img-thumb2shi"  (click)="selectTag(0)">
+                    
+                        <img style="
+                             width: 120px !important;
+                             height: 180px !important;
+                             border-radius: 10px 
+                          " class="selectedItem" [src]="'http://hackzurich2019.klik.mk/public/img/all.png'">
+                      
+                      <p style="position: absolute; bottom: 5px; border-radius: 10px; color: white; font-size: 14pt; padding: 10px "> All Destionations</p>
+                </div>
+                
+              </div>
+            <div  class="img-thumb ion-text-wrap" *ngIf="tagId !== 0" (click)="selectTag(0)">            
+                <div class="img-thumb2shi">
+                    
+                        <img style="
+                             width: 120px !important;
+                             height: 180px !important;
+                             border-radius: 10px 
+                          " [src]="'http://hackzurich2019.klik.mk/public/img/all.png'">
+                      
+                      <p style="position: absolute; bottom: 5px; border-radius: 10px; color: white; font-size: 14pt; padding: 10px "> All Destionations</p>
+                </div>
+                
+              </div>
+          <div  class="img-thumb ion-text-wrap" *ngFor="let img of imagesFromApi" (click)="selectTag(img.id)" >            
+            <div class="img-thumb2shi" >
+                
+                    <img style="
+                         width: 120px !important;
+                         height: 180px !important;
+                         border-radius: 10px 
+                      " [src]="'http://hackzurich2019.klik.mk/public/img/'+ img.id + '/' + img.image" 
+                      [ngClass]="tagId === img.id ? 'selectedItem' : 'default'"
+                      >
+                  
+                  <p style="position: absolute; bottom: 5px; border-radius: 10px; color: white; font-size: 14pt; padding: 10px "> {{img.title}}</p>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+    
+
+  <form 
+  [formGroup]="myForm" 
+  (ngSubmit)="submit()" 
+  novalidate>
+
+  
+      <ion-auto-complete 
+              [dataProvider]="completeTestService" 
+              formControlName="origin"
+              [options]="{ placeholder : 'Departure From:' }"
+              >
+                        </ion-auto-complete>
+   
+ 
+         
+<ion-grid>
+  <ion-row>
+    <ion-col size-xs="7" class="ion-text-center">
+        <ion-item>
+            
+            <ion-datetime displayFormat="D-M-YYYY" placeholder="Select Date" formControlName="date"></ion-datetime>
+          </ion-item>
+    </ion-col>
+    <ion-col size-xs="5" class="ion-text-center">
+        <ion-item>
+            
+            <ion-datetime displayFormat="HH:mm" placeholder="Time" formControlName="time"></ion-datetime>
+          </ion-item>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid>
+  <ion-row>
+    <ion-col size-xs="12">
+      
+        <ion-item>
+            <ion-label position="floating" >Time to Spend in Hours</ion-label>
+            <ion-input formControlName="timeToSpent"></ion-input>
+          </ion-item>
+        
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid>
+  <ion-row>
+    <ion-col class="ion-text-center">
+        <h4>Travel Time</h4>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="colPadding ion-text-center" size-xs="5" *ngIf="toggleStatus">less than 30 min</ion-col>
+    <ion-col class="colPadding ion-text-center" size-xs="5" *ngIf="!toggleStatus" style="color: blue">less than 30 min</ion-col>
+   
+    <ion-col size-xs="2">
+      <ion-toggle (ionChange)="ionChange($event)"></ion-toggle>
+    </ion-col>
+    <ion-col class="colPadding ion-text-center" size-xs="5" *ngIf="!toggleStatus">more than 30 min</ion-col>
+    <ion-col class="colPadding ion-text-center" size-xs="5" *ngIf="toggleStatus" style="color: red">more than 30 min</ion-col>
+  </ion-row>
+</ion-grid>
+
+
+<ion-row>
+  <ion-col size-xs="8" offset-xs="2">
+    <ion-button 
+          *ngIf="!toggleStatus"
+          type="submit" 
+          expand="block">
+      Search
+    </ion-button>
+    <ion-button 
+          *ngIf="toggleStatus"
+          type="submit" 
+          color="danger"
+          expand="block">
+      Search
+    </ion-button>
+  </ion-col>
+</ion-row>
+</form> 
+</ion-content>

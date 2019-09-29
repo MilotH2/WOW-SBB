@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title>Surprise</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h4 class="ion-text-center">Dear <span class="ion-text-capitalize">{{userInputFromPopover.fullName}}</span></h4>
+  <h6 class="ion-text-center">these are your travel details:</h6>
+  <ion-card style="color: black" *ngFor="let data of selectedDataFromList.ow.trip.segments">
+    <ion-row>
+      <ion-col size-xs="12">
+          <h6>{{data.origin.name}} </h6>
+          <h6>{{data.origin.date}} <span style="float: right">Departure Time: {{data.origin.time}}</span> </h6>
+          <h6>{{data.destination.name}} </h6>
+          <h6>{{data.destination.date}} <span style="float: right">Arrival Time: {{data.destination.time}}</span> </h6>
+          <h6 class="ion-text-center">Train Number: {{data.trainNumber}}</h6>
+      </ion-col>
+      
+    </ion-row>
+  </ion-card>
+  <ion-card style="color: black" *ngFor="let data of selectedDataFromList.rt.trip.segments">
+    <ion-row>
+      <ion-col size-xs="12">
+          <h6>{{data.origin.name}} </h6>
+          <h6>{{data.origin.date}} <span style="float: right">Departure Time: {{data.origin.time}}</span> </h6>
+          <h6>{{data.destination.name}} </h6>
+          <h6>{{data.destination.date}} <span style="float: right">Arrival Time: {{data.destination.time}}</span> </h6>
+          <h6 class="ion-text-center">Train Number: {{data.trainNumber}}</h6>
+      </ion-col>
+      
+    </ion-row>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,101 @@
+
+
+
+ion-auto-complete {
+  // width: 100%;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow:         1px 3px 20px 4px #ccc;
+}
+
+.avatarsScroll {
+  width: 100px;
+  background-color: green;
+  overflow: hidden; 
+  white-space: nowrap;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  .scroll {
+    overflow: auto;
+  }
+}
+
+.thumnails{
+  overflow-x: scroll;
+  overflow-y: hidden;
+  // height: 140px !important;
+  .list-thumbnail{
+    // height: 150px !important;
+  //   width: 105px !important;
+    padding: 0 10px;
+    white-space: nowrap;
+    
+    
+    .img-thumb{
+      
+      text-align: center;
+      display: inline-block;
+      // height: 190px !important;
+      overflow: hidden;
+      // border-radius: 10px;
+      // padding: 2px;
+      // width: 105px;
+      // height: 160px;
+      margin: 5px; 
+      position:relative;
+      // line-height: 60px;
+      
+    }
+      .img-thumb2shi{
+          
+        // border: 1px solid gold; 
+        width: 120px !important;
+        height: 180px !important; 
+        border-radius: 15px; 
+        margin: 5px;
+      
+    }
+    .selected-img{
+      // border: 2px solid color($colors, primary);
+    }
+    .underimg-thumb {
+
+    }
+  }
+}
+::-webkit-scrollbar { 
+  display: none; 
+}
+
+p{
+  margin: 0;
+  padding: 0;
+}
+
+ion-toggle {
+  --handle-background-checked: pink;
+  --background-checked: red;
+  --handle-background: blue;
+  --background: lightblue;
+}
+
+.colPadding {
+  padding-top: 12px;
+}
+
+.selectedItem {
+  border: 3px solid red;
+  
+}
+
+ion-auto-complete ul {
+  left: 0p !important;
+}
+
+ion-datetime {
+  color: black;
+}

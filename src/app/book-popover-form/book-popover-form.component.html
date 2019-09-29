@@ -1,0 +1,66 @@
+<ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center">
+          <h4 style="font-size: 1.5em">Enter Your Information!</h4>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+
+  <!-- LOGIN FORM -->
+  <form [formGroup]="bookForm" ngSubmit="onBookClick()" >
+
+    
+      <ion-grid>  
+        <ion-row>
+          <ion-col>
+              <ion-item style="--background: transparent !important; border: 2px solid var(--ion-color-danger); border-radius: 8px;">
+                  <ion-input 
+                        placeholder="Your Full Name"
+                        type="text"
+                        formControlName="fullName"
+                  ></ion-input>
+                </ion-item>
+                <ion-item
+                      style="border: 2px solid red; border-radius: 8px;" 
+                      *ngIf="!bookForm.get('fullName').valid && bookForm.get('fullName').touched"
+                      lines="none">
+                    <ion-text>
+                        <p class="paragrafOnErrorInput">Please enter E-Mail!</p>
+                    </ion-text>
+                  </ion-item>
+                  
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+              <ion-item style="--background: transparent !important; border: 2px solid var(--ion-color-danger); border-radius: 8px;">
+                  <ion-input 
+                        placeholder="Your E-Mail"
+                        type="email"
+                        formControlName="bookEmail"
+                  ></ion-input>
+                </ion-item>
+                <ion-item
+                      style="border: 2px solid red; border-radius: 8px;" 
+                      *ngIf="!bookForm.get('bookEmail').valid && bookForm.get('bookEmail').touched"
+                      lines="none">
+                    <ion-text>
+                        <p class="paragrafOnErrorInput">Please enter Password!</p>
+                    </ion-text>
+                  </ion-item>
+                  
+          </ion-col>
+        </ion-row>
+        <hr>
+  
+        <ion-grid style="padding-left: 4px; padding-right: 4px; padding-bottom: 0px" class="ion-text-center">
+              <ion-button 
+              expand="block" 
+              color="danger" 
+              type="submit"
+              (click)="onBookClick()">Book your Surpise Destination
+            </ion-button>
+        </ion-grid>
+  
+        
+  </ion-grid>
